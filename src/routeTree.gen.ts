@@ -9,14 +9,40 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RecruiterRouteImport } from './routes/recruiter'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as CollegeRouteImport } from './routes/college'
 import { Route as StudentRouteImport } from './routes/_student'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RecruiterJobsRouteImport } from './routes/recruiter/jobs'
+import { Route as RecruiterInterviewsRouteImport } from './routes/recruiter/interviews'
+import { Route as RecruiterDashboardRouteImport } from './routes/recruiter/dashboard'
+import { Route as RecruiterCandidatesRouteImport } from './routes/recruiter/candidates'
+import { Route as CollegeStudentsRouteImport } from './routes/college/students'
+import { Route as CollegeDashboardRouteImport } from './routes/college/dashboard'
+import { Route as CollegeCohortsRouteImport } from './routes/college/cohorts'
+import { Route as CollegeAnalyticsRouteImport } from './routes/college/analytics'
+import { Route as StudentSubjectsRouteImport } from './routes/_student/subjects'
+import { Route as StudentProjectsRouteImport } from './routes/_student/projects'
+import { Route as StudentProfileRouteImport } from './routes/_student/profile'
+import { Route as StudentLeaderboardRouteImport } from './routes/_student/leaderboard'
+import { Route as StudentJobsRouteImport } from './routes/_student/jobs'
+import { Route as StudentDsaRouteImport } from './routes/_student/dsa'
 import { Route as StudentDashboardRouteImport } from './routes/_student/dashboard'
 
+const RecruiterRoute = RecruiterRouteImport.update({
+  id: '/recruiter',
+  path: '/recruiter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollegeRoute = CollegeRouteImport.update({
+  id: '/college',
+  path: '/college',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudentRoute = StudentRouteImport.update({
@@ -28,6 +54,76 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecruiterJobsRoute = RecruiterJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => RecruiterRoute,
+} as any)
+const RecruiterInterviewsRoute = RecruiterInterviewsRouteImport.update({
+  id: '/interviews',
+  path: '/interviews',
+  getParentRoute: () => RecruiterRoute,
+} as any)
+const RecruiterDashboardRoute = RecruiterDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => RecruiterRoute,
+} as any)
+const RecruiterCandidatesRoute = RecruiterCandidatesRouteImport.update({
+  id: '/candidates',
+  path: '/candidates',
+  getParentRoute: () => RecruiterRoute,
+} as any)
+const CollegeStudentsRoute = CollegeStudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => CollegeRoute,
+} as any)
+const CollegeDashboardRoute = CollegeDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => CollegeRoute,
+} as any)
+const CollegeCohortsRoute = CollegeCohortsRouteImport.update({
+  id: '/cohorts',
+  path: '/cohorts',
+  getParentRoute: () => CollegeRoute,
+} as any)
+const CollegeAnalyticsRoute = CollegeAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => CollegeRoute,
+} as any)
+const StudentSubjectsRoute = StudentSubjectsRouteImport.update({
+  id: '/subjects',
+  path: '/subjects',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentProjectsRoute = StudentProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentProfileRoute = StudentProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentLeaderboardRoute = StudentLeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentJobsRoute = StudentJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => StudentRoute,
+} as any)
+const StudentDsaRoute = StudentDsaRouteImport.update({
+  id: '/dsa',
+  path: '/dsa',
+  getParentRoute: () => StudentRoute,
+} as any)
 const StudentDashboardRoute = StudentDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -36,42 +132,165 @@ const StudentDashboardRoute = StudentDashboardRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/college': typeof CollegeRouteWithChildren
   '/login': typeof LoginRoute
+  '/recruiter': typeof RecruiterRouteWithChildren
   '/dashboard': typeof StudentDashboardRoute
+  '/dsa': typeof StudentDsaRoute
+  '/jobs': typeof StudentJobsRoute
+  '/leaderboard': typeof StudentLeaderboardRoute
+  '/profile': typeof StudentProfileRoute
+  '/projects': typeof StudentProjectsRoute
+  '/subjects': typeof StudentSubjectsRoute
+  '/college/analytics': typeof CollegeAnalyticsRoute
+  '/college/cohorts': typeof CollegeCohortsRoute
+  '/college/dashboard': typeof CollegeDashboardRoute
+  '/college/students': typeof CollegeStudentsRoute
+  '/recruiter/candidates': typeof RecruiterCandidatesRoute
+  '/recruiter/dashboard': typeof RecruiterDashboardRoute
+  '/recruiter/interviews': typeof RecruiterInterviewsRoute
+  '/recruiter/jobs': typeof RecruiterJobsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/college': typeof CollegeRouteWithChildren
   '/login': typeof LoginRoute
+  '/recruiter': typeof RecruiterRouteWithChildren
   '/dashboard': typeof StudentDashboardRoute
+  '/dsa': typeof StudentDsaRoute
+  '/jobs': typeof StudentJobsRoute
+  '/leaderboard': typeof StudentLeaderboardRoute
+  '/profile': typeof StudentProfileRoute
+  '/projects': typeof StudentProjectsRoute
+  '/subjects': typeof StudentSubjectsRoute
+  '/college/analytics': typeof CollegeAnalyticsRoute
+  '/college/cohorts': typeof CollegeCohortsRoute
+  '/college/dashboard': typeof CollegeDashboardRoute
+  '/college/students': typeof CollegeStudentsRoute
+  '/recruiter/candidates': typeof RecruiterCandidatesRoute
+  '/recruiter/dashboard': typeof RecruiterDashboardRoute
+  '/recruiter/interviews': typeof RecruiterInterviewsRoute
+  '/recruiter/jobs': typeof RecruiterJobsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_student': typeof StudentRouteWithChildren
+  '/college': typeof CollegeRouteWithChildren
   '/login': typeof LoginRoute
+  '/recruiter': typeof RecruiterRouteWithChildren
   '/_student/dashboard': typeof StudentDashboardRoute
+  '/_student/dsa': typeof StudentDsaRoute
+  '/_student/jobs': typeof StudentJobsRoute
+  '/_student/leaderboard': typeof StudentLeaderboardRoute
+  '/_student/profile': typeof StudentProfileRoute
+  '/_student/projects': typeof StudentProjectsRoute
+  '/_student/subjects': typeof StudentSubjectsRoute
+  '/college/analytics': typeof CollegeAnalyticsRoute
+  '/college/cohorts': typeof CollegeCohortsRoute
+  '/college/dashboard': typeof CollegeDashboardRoute
+  '/college/students': typeof CollegeStudentsRoute
+  '/recruiter/candidates': typeof RecruiterCandidatesRoute
+  '/recruiter/dashboard': typeof RecruiterDashboardRoute
+  '/recruiter/interviews': typeof RecruiterInterviewsRoute
+  '/recruiter/jobs': typeof RecruiterJobsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/college'
+    | '/login'
+    | '/recruiter'
+    | '/dashboard'
+    | '/dsa'
+    | '/jobs'
+    | '/leaderboard'
+    | '/profile'
+    | '/projects'
+    | '/subjects'
+    | '/college/analytics'
+    | '/college/cohorts'
+    | '/college/dashboard'
+    | '/college/students'
+    | '/recruiter/candidates'
+    | '/recruiter/dashboard'
+    | '/recruiter/interviews'
+    | '/recruiter/jobs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/dashboard'
-  id: '__root__' | '/' | '/_student' | '/login' | '/_student/dashboard'
+  to:
+    | '/'
+    | '/college'
+    | '/login'
+    | '/recruiter'
+    | '/dashboard'
+    | '/dsa'
+    | '/jobs'
+    | '/leaderboard'
+    | '/profile'
+    | '/projects'
+    | '/subjects'
+    | '/college/analytics'
+    | '/college/cohorts'
+    | '/college/dashboard'
+    | '/college/students'
+    | '/recruiter/candidates'
+    | '/recruiter/dashboard'
+    | '/recruiter/interviews'
+    | '/recruiter/jobs'
+  id:
+    | '__root__'
+    | '/'
+    | '/_student'
+    | '/college'
+    | '/login'
+    | '/recruiter'
+    | '/_student/dashboard'
+    | '/_student/dsa'
+    | '/_student/jobs'
+    | '/_student/leaderboard'
+    | '/_student/profile'
+    | '/_student/projects'
+    | '/_student/subjects'
+    | '/college/analytics'
+    | '/college/cohorts'
+    | '/college/dashboard'
+    | '/college/students'
+    | '/recruiter/candidates'
+    | '/recruiter/dashboard'
+    | '/recruiter/interviews'
+    | '/recruiter/jobs'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StudentRoute: typeof StudentRouteWithChildren
+  CollegeRoute: typeof CollegeRouteWithChildren
   LoginRoute: typeof LoginRoute
+  RecruiterRoute: typeof RecruiterRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/recruiter': {
+      id: '/recruiter'
+      path: '/recruiter'
+      fullPath: '/recruiter'
+      preLoaderRoute: typeof RecruiterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/college': {
+      id: '/college'
+      path: '/college'
+      fullPath: '/college'
+      preLoaderRoute: typeof CollegeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_student': {
@@ -88,6 +307,104 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/recruiter/jobs': {
+      id: '/recruiter/jobs'
+      path: '/jobs'
+      fullPath: '/recruiter/jobs'
+      preLoaderRoute: typeof RecruiterJobsRouteImport
+      parentRoute: typeof RecruiterRoute
+    }
+    '/recruiter/interviews': {
+      id: '/recruiter/interviews'
+      path: '/interviews'
+      fullPath: '/recruiter/interviews'
+      preLoaderRoute: typeof RecruiterInterviewsRouteImport
+      parentRoute: typeof RecruiterRoute
+    }
+    '/recruiter/dashboard': {
+      id: '/recruiter/dashboard'
+      path: '/dashboard'
+      fullPath: '/recruiter/dashboard'
+      preLoaderRoute: typeof RecruiterDashboardRouteImport
+      parentRoute: typeof RecruiterRoute
+    }
+    '/recruiter/candidates': {
+      id: '/recruiter/candidates'
+      path: '/candidates'
+      fullPath: '/recruiter/candidates'
+      preLoaderRoute: typeof RecruiterCandidatesRouteImport
+      parentRoute: typeof RecruiterRoute
+    }
+    '/college/students': {
+      id: '/college/students'
+      path: '/students'
+      fullPath: '/college/students'
+      preLoaderRoute: typeof CollegeStudentsRouteImport
+      parentRoute: typeof CollegeRoute
+    }
+    '/college/dashboard': {
+      id: '/college/dashboard'
+      path: '/dashboard'
+      fullPath: '/college/dashboard'
+      preLoaderRoute: typeof CollegeDashboardRouteImport
+      parentRoute: typeof CollegeRoute
+    }
+    '/college/cohorts': {
+      id: '/college/cohorts'
+      path: '/cohorts'
+      fullPath: '/college/cohorts'
+      preLoaderRoute: typeof CollegeCohortsRouteImport
+      parentRoute: typeof CollegeRoute
+    }
+    '/college/analytics': {
+      id: '/college/analytics'
+      path: '/analytics'
+      fullPath: '/college/analytics'
+      preLoaderRoute: typeof CollegeAnalyticsRouteImport
+      parentRoute: typeof CollegeRoute
+    }
+    '/_student/subjects': {
+      id: '/_student/subjects'
+      path: '/subjects'
+      fullPath: '/subjects'
+      preLoaderRoute: typeof StudentSubjectsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/_student/projects': {
+      id: '/_student/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof StudentProjectsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/_student/profile': {
+      id: '/_student/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof StudentProfileRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/_student/leaderboard': {
+      id: '/_student/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof StudentLeaderboardRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/_student/jobs': {
+      id: '/_student/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof StudentJobsRouteImport
+      parentRoute: typeof StudentRoute
+    }
+    '/_student/dsa': {
+      id: '/_student/dsa'
+      path: '/dsa'
+      fullPath: '/dsa'
+      preLoaderRoute: typeof StudentDsaRouteImport
+      parentRoute: typeof StudentRoute
+    }
     '/_student/dashboard': {
       id: '/_student/dashboard'
       path: '/dashboard'
@@ -100,20 +417,79 @@ declare module '@tanstack/react-router' {
 
 interface StudentRouteChildren {
   StudentDashboardRoute: typeof StudentDashboardRoute
+  StudentDsaRoute: typeof StudentDsaRoute
+  StudentJobsRoute: typeof StudentJobsRoute
+  StudentLeaderboardRoute: typeof StudentLeaderboardRoute
+  StudentProfileRoute: typeof StudentProfileRoute
+  StudentProjectsRoute: typeof StudentProjectsRoute
+  StudentSubjectsRoute: typeof StudentSubjectsRoute
 }
 
 const StudentRouteChildren: StudentRouteChildren = {
   StudentDashboardRoute: StudentDashboardRoute,
+  StudentDsaRoute: StudentDsaRoute,
+  StudentJobsRoute: StudentJobsRoute,
+  StudentLeaderboardRoute: StudentLeaderboardRoute,
+  StudentProfileRoute: StudentProfileRoute,
+  StudentProjectsRoute: StudentProjectsRoute,
+  StudentSubjectsRoute: StudentSubjectsRoute,
 }
 
 const StudentRouteWithChildren =
   StudentRoute._addFileChildren(StudentRouteChildren)
 
+interface CollegeRouteChildren {
+  CollegeAnalyticsRoute: typeof CollegeAnalyticsRoute
+  CollegeCohortsRoute: typeof CollegeCohortsRoute
+  CollegeDashboardRoute: typeof CollegeDashboardRoute
+  CollegeStudentsRoute: typeof CollegeStudentsRoute
+}
+
+const CollegeRouteChildren: CollegeRouteChildren = {
+  CollegeAnalyticsRoute: CollegeAnalyticsRoute,
+  CollegeCohortsRoute: CollegeCohortsRoute,
+  CollegeDashboardRoute: CollegeDashboardRoute,
+  CollegeStudentsRoute: CollegeStudentsRoute,
+}
+
+const CollegeRouteWithChildren =
+  CollegeRoute._addFileChildren(CollegeRouteChildren)
+
+interface RecruiterRouteChildren {
+  RecruiterCandidatesRoute: typeof RecruiterCandidatesRoute
+  RecruiterDashboardRoute: typeof RecruiterDashboardRoute
+  RecruiterInterviewsRoute: typeof RecruiterInterviewsRoute
+  RecruiterJobsRoute: typeof RecruiterJobsRoute
+}
+
+const RecruiterRouteChildren: RecruiterRouteChildren = {
+  RecruiterCandidatesRoute: RecruiterCandidatesRoute,
+  RecruiterDashboardRoute: RecruiterDashboardRoute,
+  RecruiterInterviewsRoute: RecruiterInterviewsRoute,
+  RecruiterJobsRoute: RecruiterJobsRoute,
+}
+
+const RecruiterRouteWithChildren = RecruiterRoute._addFileChildren(
+  RecruiterRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StudentRoute: StudentRouteWithChildren,
+  CollegeRoute: CollegeRouteWithChildren,
   LoginRoute: LoginRoute,
+  RecruiterRoute: RecruiterRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

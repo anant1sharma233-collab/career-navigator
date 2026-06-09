@@ -10,7 +10,7 @@ import { StatsCard } from "@/components/dashboard/StatsCard";
 import { JourneyCard } from "@/components/dashboard/JourneyCard";
 import { MissionItem } from "@/components/dashboard/MissionItem";
 import { Roadmap } from "@/components/dashboard/Roadmap";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import type { Mission } from "@/types";
 
 export const Route = createFileRoute("/_student/dashboard")({
