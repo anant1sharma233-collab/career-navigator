@@ -128,7 +128,7 @@ function LoginPage() {
               type="email"
               placeholder="Enter your email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
               leftIcon={<Mail className="w-4 h-4" />}
               error={errors.email}
               autoComplete="email"
@@ -137,7 +137,7 @@ function LoginPage() {
               type={showPw ? "text" : "password"}
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
               leftIcon={<Lock className="w-4 h-4" />}
               rightIcon={
                 <button
