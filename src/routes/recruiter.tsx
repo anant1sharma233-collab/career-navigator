@@ -2,7 +2,7 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { LayoutDashboard, Users, Briefcase, CalendarClock } from "lucide-react";
 import { PortalShell } from "@/components/common/PortalShell";
 
-export const Route = createFileRoute("/_recruiter")({
+export const Route = createFileRoute("/recruiter")({
   component: RecruiterLayout,
 });
 
