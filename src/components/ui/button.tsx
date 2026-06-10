@@ -49,10 +49,16 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(buttonVariants({ variant, size }), fullWidth && "w-full", className)}
         {...props}
       >
-        {loading ? (
-          <span className="inline-block w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-        ) : null}
-        {children}
+        {asChild ? (
+          children
+        ) : (
+          <>
+            {loading ? (
+              <span className="inline-block w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+            ) : null}
+            {children}
+          </>
+        )}
       </Comp>
     );
   },
