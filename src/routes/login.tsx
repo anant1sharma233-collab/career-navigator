@@ -207,6 +207,7 @@ function LoginPage() {
             </Link>
           </p>
         </motion.div>
+        </div>
       </div>
     </div>
   );
