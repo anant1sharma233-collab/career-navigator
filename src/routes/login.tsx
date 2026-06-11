@@ -111,12 +111,29 @@ function LoginPage() {
       </div>
 
       {/* Right */}
-      <div className="flex items-center justify-center p-6 sm:p-12 bg-background">
+      <div className="relative z-10 flex items-center justify-center p-6 sm:p-12">
+        <div className="relative w-full max-w-[400px]">
+          {/* Animated purple→cyan glow border */}
+          <motion.div
+            aria-hidden
+            className="absolute -inset-[2px] rounded-2xl opacity-80 blur-xl"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(124,58,237,0.65), rgba(34,211,238,0.55))",
+            }}
+            animate={{ opacity: [0.55, 0.9, 0.55] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="w-full max-w-[400px] glass-elevated rounded-2xl p-8 shadow-[0_20px_80px_-20px_rgba(124,58,237,0.45)]"
+          className="relative w-full max-w-[400px] rounded-2xl p-8 border border-white/15 shadow-[0_30px_120px_-30px_rgba(34,211,238,0.45)]"
+          style={{
+            background: "rgba(15, 18, 32, 0.55)",
+            backdropFilter: "blur(28px) saturate(160%)",
+            WebkitBackdropFilter: "blur(28px) saturate(160%)",
+          }}
         >
           <h2 className="text-2xl font-semibold text-white">Welcome back</h2>
           <p className="mt-1 text-sm text-muted-foreground">Continue your journey to placement.</p>
