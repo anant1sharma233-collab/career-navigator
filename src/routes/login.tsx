@@ -6,6 +6,7 @@ import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { CosmicBackground } from "@/components/login/CosmicBackground";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -56,16 +57,12 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-background">
+    <div className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-[#05060f] overflow-hidden">
+      {/* Cosmic animated backdrop spans entire page */}
+      <CosmicBackground />
+
       {/* Left */}
-      <div className="relative hidden lg:flex flex-col justify-between p-12 overflow-hidden">
-        <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(800px 600px at 10% 10%, rgba(124,58,237,0.35), transparent 60%), radial-gradient(700px 500px at 90% 80%, rgba(99,102,241,0.30), transparent 60%), linear-gradient(180deg, #09090b, #0b0b14)",
-          }}
-        />
+      <div className="relative hidden lg:flex flex-col justify-between p-12 overflow-hidden z-10">
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
