@@ -6,6 +6,7 @@ import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { CosmicBackground } from "@/components/login/CosmicBackground";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -56,16 +57,12 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-background">
+    <div className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-[#05060f] overflow-hidden">
+      {/* Cosmic animated backdrop spans entire page */}
+      <CosmicBackground />
+
       {/* Left */}
-      <div className="relative hidden lg:flex flex-col justify-between p-12 overflow-hidden">
-        <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(800px 600px at 10% 10%, rgba(124,58,237,0.35), transparent 60%), radial-gradient(700px 500px at 90% 80%, rgba(99,102,241,0.30), transparent 60%), linear-gradient(180deg, #09090b, #0b0b14)",
-          }}
-        />
+      <div className="relative hidden lg:flex flex-col justify-between p-12 overflow-hidden z-10">
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -114,12 +111,29 @@ function LoginPage() {
       </div>
 
       {/* Right */}
-      <div className="flex items-center justify-center p-6 sm:p-12 bg-background">
+      <div className="relative z-10 flex items-center justify-center p-6 sm:p-12">
+        <div className="relative w-full max-w-[400px]">
+          {/* Animated purple→cyan glow border */}
+          <motion.div
+            aria-hidden
+            className="absolute -inset-[2px] rounded-2xl opacity-80 blur-xl"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(124,58,237,0.65), rgba(34,211,238,0.55))",
+            }}
+            animate={{ opacity: [0.55, 0.9, 0.55] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="w-full max-w-[400px] glass-elevated rounded-2xl p-8 shadow-[0_20px_80px_-20px_rgba(124,58,237,0.45)]"
+          className="relative w-full max-w-[400px] rounded-2xl p-8 border border-white/15 shadow-[0_30px_120px_-30px_rgba(34,211,238,0.45)]"
+          style={{
+            background: "rgba(15, 18, 32, 0.55)",
+            backdropFilter: "blur(28px) saturate(160%)",
+            WebkitBackdropFilter: "blur(28px) saturate(160%)",
+          }}
         >
           <h2 className="text-2xl font-semibold text-white">Welcome back</h2>
           <p className="mt-1 text-sm text-muted-foreground">Continue your journey to placement.</p>
@@ -193,6 +207,7 @@ function LoginPage() {
             </Link>
           </p>
         </motion.div>
+        </div>
       </div>
     </div>
   );
