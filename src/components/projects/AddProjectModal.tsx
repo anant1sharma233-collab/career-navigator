@@ -135,7 +135,7 @@ export function AddProjectModal({ open, onClose, stacks, defaultStackId, onSubmi
                   <div className="flex gap-2 justify-end">
                     <Button type="button" variant="ghost" onClick={handleClose}>Cancel</Button>
                     <Button type="submit" loading={submitting}>
-                      {submitting ? <>Analyzing<Loader2 className="w-4 h-4 animate-spin" /></> : "Submit for review"}
+                      {submitting ? "Analyzing…" : "Submit for review"}
                     </Button>
                   </div>
                 </form>
