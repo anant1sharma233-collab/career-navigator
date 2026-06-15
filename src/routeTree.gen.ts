@@ -29,6 +29,10 @@ import { Route as StudentLeaderboardRouteImport } from './routes/_student/leader
 import { Route as StudentJobsRouteImport } from './routes/_student/jobs'
 import { Route as StudentDsaRouteImport } from './routes/_student/dsa'
 import { Route as StudentDashboardRouteImport } from './routes/_student/dashboard'
+import { Route as StudentDsaIndexRouteImport } from './routes/_student/dsa.index'
+import { Route as StudentDsaPackagePackageIdRouteImport } from './routes/_student/dsa.package.$packageId'
+import { Route as StudentDsaJourneyTopicIdRouteImport } from './routes/_student/dsa.journey.$topicId'
+import { Route as StudentDsaCompanyCompanyIdRouteImport } from './routes/_student/dsa.company.$companyId'
 
 const RecruiterRoute = RecruiterRouteImport.update({
   id: '/recruiter',
@@ -129,6 +133,29 @@ const StudentDashboardRoute = StudentDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => StudentRoute,
 } as any)
+const StudentDsaIndexRoute = StudentDsaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => StudentDsaRoute,
+} as any)
+const StudentDsaPackagePackageIdRoute =
+  StudentDsaPackagePackageIdRouteImport.update({
+    id: '/package/$packageId',
+    path: '/package/$packageId',
+    getParentRoute: () => StudentDsaRoute,
+  } as any)
+const StudentDsaJourneyTopicIdRoute =
+  StudentDsaJourneyTopicIdRouteImport.update({
+    id: '/journey/$topicId',
+    path: '/journey/$topicId',
+    getParentRoute: () => StudentDsaRoute,
+  } as any)
+const StudentDsaCompanyCompanyIdRoute =
+  StudentDsaCompanyCompanyIdRouteImport.update({
+    id: '/company/$companyId',
+    path: '/company/$companyId',
+    getParentRoute: () => StudentDsaRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -136,7 +163,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
   '/dashboard': typeof StudentDashboardRoute
-  '/dsa': typeof StudentDsaRoute
+  '/dsa': typeof StudentDsaRouteWithChildren
   '/jobs': typeof StudentJobsRoute
   '/leaderboard': typeof StudentLeaderboardRoute
   '/profile': typeof StudentProfileRoute
@@ -150,6 +177,10 @@ export interface FileRoutesByFullPath {
   '/recruiter/dashboard': typeof RecruiterDashboardRoute
   '/recruiter/interviews': typeof RecruiterInterviewsRoute
   '/recruiter/jobs': typeof RecruiterJobsRoute
+  '/dsa/': typeof StudentDsaIndexRoute
+  '/dsa/company/$companyId': typeof StudentDsaCompanyCompanyIdRoute
+  '/dsa/journey/$topicId': typeof StudentDsaJourneyTopicIdRoute
+  '/dsa/package/$packageId': typeof StudentDsaPackagePackageIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -157,7 +188,6 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
   '/dashboard': typeof StudentDashboardRoute
-  '/dsa': typeof StudentDsaRoute
   '/jobs': typeof StudentJobsRoute
   '/leaderboard': typeof StudentLeaderboardRoute
   '/profile': typeof StudentProfileRoute
@@ -171,6 +201,10 @@ export interface FileRoutesByTo {
   '/recruiter/dashboard': typeof RecruiterDashboardRoute
   '/recruiter/interviews': typeof RecruiterInterviewsRoute
   '/recruiter/jobs': typeof RecruiterJobsRoute
+  '/dsa': typeof StudentDsaIndexRoute
+  '/dsa/company/$companyId': typeof StudentDsaCompanyCompanyIdRoute
+  '/dsa/journey/$topicId': typeof StudentDsaJourneyTopicIdRoute
+  '/dsa/package/$packageId': typeof StudentDsaPackagePackageIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -180,7 +214,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
   '/_student/dashboard': typeof StudentDashboardRoute
-  '/_student/dsa': typeof StudentDsaRoute
+  '/_student/dsa': typeof StudentDsaRouteWithChildren
   '/_student/jobs': typeof StudentJobsRoute
   '/_student/leaderboard': typeof StudentLeaderboardRoute
   '/_student/profile': typeof StudentProfileRoute
@@ -194,6 +228,10 @@ export interface FileRoutesById {
   '/recruiter/dashboard': typeof RecruiterDashboardRoute
   '/recruiter/interviews': typeof RecruiterInterviewsRoute
   '/recruiter/jobs': typeof RecruiterJobsRoute
+  '/_student/dsa/': typeof StudentDsaIndexRoute
+  '/_student/dsa/company/$companyId': typeof StudentDsaCompanyCompanyIdRoute
+  '/_student/dsa/journey/$topicId': typeof StudentDsaJourneyTopicIdRoute
+  '/_student/dsa/package/$packageId': typeof StudentDsaPackagePackageIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -217,6 +255,10 @@ export interface FileRouteTypes {
     | '/recruiter/dashboard'
     | '/recruiter/interviews'
     | '/recruiter/jobs'
+    | '/dsa/'
+    | '/dsa/company/$companyId'
+    | '/dsa/journey/$topicId'
+    | '/dsa/package/$packageId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -224,7 +266,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/recruiter'
     | '/dashboard'
-    | '/dsa'
     | '/jobs'
     | '/leaderboard'
     | '/profile'
@@ -238,6 +279,10 @@ export interface FileRouteTypes {
     | '/recruiter/dashboard'
     | '/recruiter/interviews'
     | '/recruiter/jobs'
+    | '/dsa'
+    | '/dsa/company/$companyId'
+    | '/dsa/journey/$topicId'
+    | '/dsa/package/$packageId'
   id:
     | '__root__'
     | '/'
@@ -260,6 +305,10 @@ export interface FileRouteTypes {
     | '/recruiter/dashboard'
     | '/recruiter/interviews'
     | '/recruiter/jobs'
+    | '/_student/dsa/'
+    | '/_student/dsa/company/$companyId'
+    | '/_student/dsa/journey/$topicId'
+    | '/_student/dsa/package/$packageId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -412,12 +461,58 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentDashboardRouteImport
       parentRoute: typeof StudentRoute
     }
+    '/_student/dsa/': {
+      id: '/_student/dsa/'
+      path: '/'
+      fullPath: '/dsa/'
+      preLoaderRoute: typeof StudentDsaIndexRouteImport
+      parentRoute: typeof StudentDsaRoute
+    }
+    '/_student/dsa/package/$packageId': {
+      id: '/_student/dsa/package/$packageId'
+      path: '/package/$packageId'
+      fullPath: '/dsa/package/$packageId'
+      preLoaderRoute: typeof StudentDsaPackagePackageIdRouteImport
+      parentRoute: typeof StudentDsaRoute
+    }
+    '/_student/dsa/journey/$topicId': {
+      id: '/_student/dsa/journey/$topicId'
+      path: '/journey/$topicId'
+      fullPath: '/dsa/journey/$topicId'
+      preLoaderRoute: typeof StudentDsaJourneyTopicIdRouteImport
+      parentRoute: typeof StudentDsaRoute
+    }
+    '/_student/dsa/company/$companyId': {
+      id: '/_student/dsa/company/$companyId'
+      path: '/company/$companyId'
+      fullPath: '/dsa/company/$companyId'
+      preLoaderRoute: typeof StudentDsaCompanyCompanyIdRouteImport
+      parentRoute: typeof StudentDsaRoute
+    }
   }
 }
 
+interface StudentDsaRouteChildren {
+  StudentDsaIndexRoute: typeof StudentDsaIndexRoute
+  StudentDsaCompanyCompanyIdRoute: typeof StudentDsaCompanyCompanyIdRoute
+  StudentDsaJourneyTopicIdRoute: typeof StudentDsaJourneyTopicIdRoute
+  StudentDsaPackagePackageIdRoute: typeof StudentDsaPackagePackageIdRoute
+}
+
+const StudentDsaRouteChildren: StudentDsaRouteChildren = {
+  StudentDsaIndexRoute: StudentDsaIndexRoute,
+  StudentDsaCompanyCompanyIdRoute: StudentDsaCompanyCompanyIdRoute,
+  StudentDsaJourneyTopicIdRoute: StudentDsaJourneyTopicIdRoute,
+  StudentDsaPackagePackageIdRoute: StudentDsaPackagePackageIdRoute,
+}
+
+const StudentDsaRouteWithChildren = StudentDsaRoute._addFileChildren(
+  StudentDsaRouteChildren,
+)
+
 interface StudentRouteChildren {
   StudentDashboardRoute: typeof StudentDashboardRoute
-  StudentDsaRoute: typeof StudentDsaRoute
+  StudentDsaRoute: typeof StudentDsaRouteWithChildren
   StudentJobsRoute: typeof StudentJobsRoute
   StudentLeaderboardRoute: typeof StudentLeaderboardRoute
   StudentProfileRoute: typeof StudentProfileRoute
@@ -427,7 +522,7 @@ interface StudentRouteChildren {
 
 const StudentRouteChildren: StudentRouteChildren = {
   StudentDashboardRoute: StudentDashboardRoute,
-  StudentDsaRoute: StudentDsaRoute,
+  StudentDsaRoute: StudentDsaRouteWithChildren,
   StudentJobsRoute: StudentJobsRoute,
   StudentLeaderboardRoute: StudentLeaderboardRoute,
   StudentProfileRoute: StudentProfileRoute,
