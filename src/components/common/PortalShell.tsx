@@ -2,6 +2,7 @@ import { type ReactNode } from "react";
 import { PortalSidebar, type NavItem } from "./PortalSidebar";
 import { Header } from "./Header";
 import { CommandPalette } from "@/components/ui/CommandPalette";
+import { AuroraBackground } from "./AuroraBackground";
 import type { UserRole } from "@/types";
 
 interface PortalShellProps {
@@ -16,7 +17,8 @@ interface PortalShellProps {
 
 export function PortalShell({ brand, brandHref, nav, userName, cta, children }: PortalShellProps) {
   return (
-    <div className="min-h-screen gradient-surface">
+    <div className="min-h-screen relative">
+      <AuroraBackground />
       <PortalSidebar brand={brand} brandHref={brandHref} items={nav} cta={cta} />
       <div className="pl-[260px]">
         <Header userName={userName} />

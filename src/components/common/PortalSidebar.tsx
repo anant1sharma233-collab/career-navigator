@@ -20,7 +20,7 @@ export function PortalSidebar({ brand, brandHref, items, cta }: PortalSidebarPro
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
-    <aside className="fixed left-0 top-0 z-30 h-screen w-[260px] border-r border-white/5 bg-background flex flex-col">
+    <aside className="sidebar-surface fixed left-0 top-0 z-30 h-screen w-[260px] flex flex-col">
       <div className="px-6 pt-7 pb-8">
         <Link to={brandHref as any} className="inline-flex items-center gap-2">
           <div className="h-7 w-7 rounded-lg gradient-primary glow-primary" />
@@ -41,11 +41,12 @@ export function PortalSidebar({ brand, brandHref, items, cta }: PortalSidebarPro
             >
               <Link
                 to={item.to as any}
+                style={{ transition: "background-color 150ms ease, color 150ms ease, box-shadow 150ms ease" }}
                 className={cn(
-                  "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all duration-200",
+                  "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm",
                   active
-                    ? "bg-primary text-white shadow-[0_8px_24px_-8px_rgba(124,58,237,0.6)]"
-                    : "text-muted-foreground hover:text-white hover:bg-white/5",
+                    ? "bg-primary text-white nav-active-glow"
+                    : "text-muted-foreground hover:text-white hover:bg-[rgba(124,58,237,0.08)]",
                 )}
               >
                 <Icon className="w-4 h-4" />
