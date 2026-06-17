@@ -77,8 +77,11 @@ function DashboardPage() {
               Let's boost your placement readiness.
             </p>
           </div>
-          <div className="glass rounded-3xl p-8 flex items-center gap-8">
-            <ReadinessRing value={stats.readiness} />
+          <div className="glass-card rounded-3xl p-8 flex items-center gap-8">
+            <div className="relative">
+              <div className="readiness-glow" />
+              <ReadinessRing value={stats.readiness} />
+            </div>
             <div className="space-y-2 min-w-0">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">
                 You're on track
@@ -113,7 +116,7 @@ function DashboardPage() {
             value={`${stats.daysToReady} days`}
             accentClass="from-success/30 to-accent/20"
           />
-          <Button fullWidth size="lg" className="mt-2">
+          <Button fullWidth size="lg" className="mt-2 continue-journey-btn">
             Continue Journey <ArrowRight className="w-4 h-4" />
           </Button>
         </div>

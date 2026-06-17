@@ -15,11 +15,8 @@ export function JourneyCard({ journey }: { journey: Journey }) {
 
   return (
     <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ type: "spring", stiffness: 260, damping: 22 }}
       className={cn(
-        "glass rounded-2xl p-6 group cursor-pointer",
-        "hover:border-white/25 transition-all duration-300",
+        "glass-card journey-hover rounded-2xl p-6 group cursor-pointer",
         "hover:" + a.glow,
       )}
     >

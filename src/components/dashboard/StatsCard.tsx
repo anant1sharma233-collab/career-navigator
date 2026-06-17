@@ -9,7 +9,7 @@ interface Props {
 
 export function StatsCard({ icon, label, value, accentClass = "from-primary/30 to-secondary/20" }: Props) {
   return (
-    <div className="glass rounded-2xl p-4 flex items-center gap-4 transition-all hover:border-white/20">
+    <div className="glass-card rounded-2xl p-4 flex items-center gap-4 transition-all hover:border-white/20">
       <div
         className={cn(
           "h-11 w-11 rounded-xl flex items-center justify-center text-xl",
