@@ -110,7 +110,7 @@ function OpportunitiesPage() {
 
           {/* Recommended */}
           <section className="space-y-4">
-            <SectionTitle eyebrow="For You" title="Recommended" subtitle="Top matches based on your readiness, skills, and goals." icon={Sparkles as any} />
+            <SectionTitle eyebrow="For You" title="Recommended" subtitle="Top matches based on your readiness, skills, and goals." />
             {recs.isLoading ? <LoadingState /> :
               recs.isError ? <ErrorState onRetry={() => recs.refetch()} /> :
               filteredRecs.length === 0 ? <EmptyState title="No recommendations match your filters" hint="Loosen filters or update your profile to get fresh matches." /> :
