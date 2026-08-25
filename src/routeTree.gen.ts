@@ -23,6 +23,7 @@ import { Route as CollegeDashboardRouteImport } from './routes/college/dashboard
 import { Route as CollegeCohortsRouteImport } from './routes/college/cohorts'
 import { Route as CollegeAnalyticsRouteImport } from './routes/college/analytics'
 import { Route as StudentSubjectsRouteImport } from './routes/_student/subjects'
+import { Route as StudentSettingsRouteImport } from './routes/_student/settings'
 import { Route as StudentProjectsRouteImport } from './routes/_student/projects'
 import { Route as StudentProfileRouteImport } from './routes/_student/profile'
 import { Route as StudentLeaderboardRouteImport } from './routes/_student/leaderboard'
@@ -103,6 +104,11 @@ const StudentSubjectsRoute = StudentSubjectsRouteImport.update({
   path: '/subjects',
   getParentRoute: () => StudentRoute,
 } as any)
+const StudentSettingsRoute = StudentSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => StudentRoute,
+} as any)
 const StudentProjectsRoute = StudentProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -168,6 +174,7 @@ export interface FileRoutesByFullPath {
   '/leaderboard': typeof StudentLeaderboardRoute
   '/profile': typeof StudentProfileRoute
   '/projects': typeof StudentProjectsRoute
+  '/settings': typeof StudentSettingsRoute
   '/subjects': typeof StudentSubjectsRoute
   '/college/analytics': typeof CollegeAnalyticsRoute
   '/college/cohorts': typeof CollegeCohortsRoute
@@ -192,6 +199,7 @@ export interface FileRoutesByTo {
   '/leaderboard': typeof StudentLeaderboardRoute
   '/profile': typeof StudentProfileRoute
   '/projects': typeof StudentProjectsRoute
+  '/settings': typeof StudentSettingsRoute
   '/subjects': typeof StudentSubjectsRoute
   '/college/analytics': typeof CollegeAnalyticsRoute
   '/college/cohorts': typeof CollegeCohortsRoute
@@ -219,6 +227,7 @@ export interface FileRoutesById {
   '/_student/leaderboard': typeof StudentLeaderboardRoute
   '/_student/profile': typeof StudentProfileRoute
   '/_student/projects': typeof StudentProjectsRoute
+  '/_student/settings': typeof StudentSettingsRoute
   '/_student/subjects': typeof StudentSubjectsRoute
   '/college/analytics': typeof CollegeAnalyticsRoute
   '/college/cohorts': typeof CollegeCohortsRoute
@@ -246,6 +255,7 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/profile'
     | '/projects'
+    | '/settings'
     | '/subjects'
     | '/college/analytics'
     | '/college/cohorts'
@@ -270,6 +280,7 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/profile'
     | '/projects'
+    | '/settings'
     | '/subjects'
     | '/college/analytics'
     | '/college/cohorts'
@@ -296,6 +307,7 @@ export interface FileRouteTypes {
     | '/_student/leaderboard'
     | '/_student/profile'
     | '/_student/projects'
+    | '/_student/settings'
     | '/_student/subjects'
     | '/college/analytics'
     | '/college/cohorts'
@@ -419,6 +431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentSubjectsRouteImport
       parentRoute: typeof StudentRoute
     }
+    '/_student/settings': {
+      id: '/_student/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof StudentSettingsRouteImport
+      parentRoute: typeof StudentRoute
+    }
     '/_student/projects': {
       id: '/_student/projects'
       path: '/projects'
@@ -517,6 +536,7 @@ interface StudentRouteChildren {
   StudentLeaderboardRoute: typeof StudentLeaderboardRoute
   StudentProfileRoute: typeof StudentProfileRoute
   StudentProjectsRoute: typeof StudentProjectsRoute
+  StudentSettingsRoute: typeof StudentSettingsRoute
   StudentSubjectsRoute: typeof StudentSubjectsRoute
 }
 
@@ -527,6 +547,7 @@ const StudentRouteChildren: StudentRouteChildren = {
   StudentLeaderboardRoute: StudentLeaderboardRoute,
   StudentProfileRoute: StudentProfileRoute,
   StudentProjectsRoute: StudentProjectsRoute,
+  StudentSettingsRoute: StudentSettingsRoute,
   StudentSubjectsRoute: StudentSubjectsRoute,
 }
 
@@ -578,13 +599,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
