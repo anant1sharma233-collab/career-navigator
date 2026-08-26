@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Play, BookOpen, CheckCircle2 } from "lucide-react";
 import { useDsaTopic } from "@/hooks/useDsa";
+import { useTopicVerification } from "@/hooks/useVerification";
+import { TopicVerificationPanel } from "@/components/verification/TopicVerificationPanel";
 import { ProgressRing } from "@/components/dsa/ProgressRing";
 import { DifficultyBadge, BadgeCard } from "@/components/dsa/BadgeCard";
 import { LoadingState, ErrorState } from "@/components/dsa/States";
@@ -28,6 +30,7 @@ const PATTERNS = ["Two Pointers", "Sliding Window", "Prefix Sum", "Kadane", "Sor
 function TopicDetail() {
   const { topicId } = Route.useParams();
   const { data: topic, isLoading, isError, refetch } = useDsaTopic(topicId);
+  const { data: verification } = useTopicVerification(topicId);
 
   if (isLoading) return <LoadingState rows={5} />;
   if (isError || !topic) return <ErrorState onRetry={() => refetch()} />;
@@ -74,6 +77,7 @@ function TopicDetail() {
         </section>
 
         <aside className="space-y-4">
+          {verification && <TopicVerificationPanel topicId={topicId} verification={verification} />}
           <div className="glass rounded-2xl p-5">
             <h3 className="text-sm font-semibold text-white">Patterns</h3>
             <div className="mt-3 flex flex-wrap gap-1.5">
