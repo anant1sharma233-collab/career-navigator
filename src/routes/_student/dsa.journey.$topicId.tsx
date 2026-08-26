@@ -30,6 +30,7 @@ const PATTERNS = ["Two Pointers", "Sliding Window", "Prefix Sum", "Kadane", "Sor
 function TopicDetail() {
   const { topicId } = Route.useParams();
   const { data: topic, isLoading, isError, refetch } = useDsaTopic(topicId);
+  const { data: verification } = useTopicVerification(topicId);
 
   if (isLoading) return <LoadingState rows={5} />;
   if (isError || !topic) return <ErrorState onRetry={() => refetch()} />;
