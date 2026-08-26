@@ -77,6 +77,7 @@ function TopicDetail() {
         </section>
 
         <aside className="space-y-4">
+          {verification && <TopicVerificationPanel topicId={topicId} verification={verification} />}
           <div className="glass rounded-2xl p-5">
             <h3 className="text-sm font-semibold text-white">Patterns</h3>
             <div className="mt-3 flex flex-wrap gap-1.5">
