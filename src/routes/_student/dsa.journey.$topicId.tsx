@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Play, BookOpen, CheckCircle2 } from "lucide-react";
 import { useDsaTopic } from "@/hooks/useDsa";
+import { useTopicVerification } from "@/hooks/useVerification";
+import { TopicVerificationPanel } from "@/components/verification/TopicVerificationPanel";
 import { ProgressRing } from "@/components/dsa/ProgressRing";
 import { DifficultyBadge, BadgeCard } from "@/components/dsa/BadgeCard";
 import { LoadingState, ErrorState } from "@/components/dsa/States";

@@ -31,6 +31,7 @@ import { Route as StudentJobsRouteImport } from './routes/_student/jobs'
 import { Route as StudentDsaRouteImport } from './routes/_student/dsa'
 import { Route as StudentDashboardRouteImport } from './routes/_student/dashboard'
 import { Route as StudentDsaIndexRouteImport } from './routes/_student/dsa.index'
+import { Route as StudentDsaVerifyTopicIdRouteImport } from './routes/_student/dsa.verify.$topicId'
 import { Route as StudentDsaPackagePackageIdRouteImport } from './routes/_student/dsa.package.$packageId'
 import { Route as StudentDsaJourneyTopicIdRouteImport } from './routes/_student/dsa.journey.$topicId'
 import { Route as StudentDsaCompanyCompanyIdRouteImport } from './routes/_student/dsa.company.$companyId'
@@ -144,6 +145,11 @@ const StudentDsaIndexRoute = StudentDsaIndexRouteImport.update({
   path: '/',
   getParentRoute: () => StudentDsaRoute,
 } as any)
+const StudentDsaVerifyTopicIdRoute = StudentDsaVerifyTopicIdRouteImport.update({
+  id: '/verify/$topicId',
+  path: '/verify/$topicId',
+  getParentRoute: () => StudentDsaRoute,
+} as any)
 const StudentDsaPackagePackageIdRoute =
   StudentDsaPackagePackageIdRouteImport.update({
     id: '/package/$packageId',
@@ -188,6 +194,7 @@ export interface FileRoutesByFullPath {
   '/dsa/company/$companyId': typeof StudentDsaCompanyCompanyIdRoute
   '/dsa/journey/$topicId': typeof StudentDsaJourneyTopicIdRoute
   '/dsa/package/$packageId': typeof StudentDsaPackagePackageIdRoute
+  '/dsa/verify/$topicId': typeof StudentDsaVerifyTopicIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -213,6 +220,7 @@ export interface FileRoutesByTo {
   '/dsa/company/$companyId': typeof StudentDsaCompanyCompanyIdRoute
   '/dsa/journey/$topicId': typeof StudentDsaJourneyTopicIdRoute
   '/dsa/package/$packageId': typeof StudentDsaPackagePackageIdRoute
+  '/dsa/verify/$topicId': typeof StudentDsaVerifyTopicIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -241,6 +249,7 @@ export interface FileRoutesById {
   '/_student/dsa/company/$companyId': typeof StudentDsaCompanyCompanyIdRoute
   '/_student/dsa/journey/$topicId': typeof StudentDsaJourneyTopicIdRoute
   '/_student/dsa/package/$packageId': typeof StudentDsaPackagePackageIdRoute
+  '/_student/dsa/verify/$topicId': typeof StudentDsaVerifyTopicIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -269,6 +278,7 @@ export interface FileRouteTypes {
     | '/dsa/company/$companyId'
     | '/dsa/journey/$topicId'
     | '/dsa/package/$packageId'
+    | '/dsa/verify/$topicId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -294,6 +304,7 @@ export interface FileRouteTypes {
     | '/dsa/company/$companyId'
     | '/dsa/journey/$topicId'
     | '/dsa/package/$packageId'
+    | '/dsa/verify/$topicId'
   id:
     | '__root__'
     | '/'
@@ -321,6 +332,7 @@ export interface FileRouteTypes {
     | '/_student/dsa/company/$companyId'
     | '/_student/dsa/journey/$topicId'
     | '/_student/dsa/package/$packageId'
+    | '/_student/dsa/verify/$topicId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -487,6 +499,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentDsaIndexRouteImport
       parentRoute: typeof StudentDsaRoute
     }
+    '/_student/dsa/verify/$topicId': {
+      id: '/_student/dsa/verify/$topicId'
+      path: '/verify/$topicId'
+      fullPath: '/dsa/verify/$topicId'
+      preLoaderRoute: typeof StudentDsaVerifyTopicIdRouteImport
+      parentRoute: typeof StudentDsaRoute
+    }
     '/_student/dsa/package/$packageId': {
       id: '/_student/dsa/package/$packageId'
       path: '/package/$packageId'
@@ -516,6 +535,7 @@ interface StudentDsaRouteChildren {
   StudentDsaCompanyCompanyIdRoute: typeof StudentDsaCompanyCompanyIdRoute
   StudentDsaJourneyTopicIdRoute: typeof StudentDsaJourneyTopicIdRoute
   StudentDsaPackagePackageIdRoute: typeof StudentDsaPackagePackageIdRoute
+  StudentDsaVerifyTopicIdRoute: typeof StudentDsaVerifyTopicIdRoute
 }
 
 const StudentDsaRouteChildren: StudentDsaRouteChildren = {
@@ -523,6 +543,7 @@ const StudentDsaRouteChildren: StudentDsaRouteChildren = {
   StudentDsaCompanyCompanyIdRoute: StudentDsaCompanyCompanyIdRoute,
   StudentDsaJourneyTopicIdRoute: StudentDsaJourneyTopicIdRoute,
   StudentDsaPackagePackageIdRoute: StudentDsaPackagePackageIdRoute,
+  StudentDsaVerifyTopicIdRoute: StudentDsaVerifyTopicIdRoute,
 }
 
 const StudentDsaRouteWithChildren = StudentDsaRoute._addFileChildren(
