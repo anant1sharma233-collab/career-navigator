@@ -16,6 +16,8 @@ import { DsaRightSidebar } from "@/components/dsa/DsaRightSidebar";
 import { DsaRecommendations } from "@/components/dsa/DsaRecommendations";
 import { ProgressRing } from "@/components/dsa/ProgressRing";
 import { LoadingState, ErrorState } from "@/components/dsa/States";
+import { VerificationSummaryCard } from "@/components/verification/VerificationSummaryCard";
+import { useVerificationSummary } from "@/hooks/useVerification";
 import {
   useDsaSummary, useDsaTopics, useDsaPackages, useDsaCompanies,
   useDsaRecommendations, useDsaSidebar,
@@ -50,6 +52,7 @@ function DsaCommandCenter() {
   const companies = useDsaCompanies();
   const recs = useDsaRecommendations();
   const sidebar = useDsaSidebar();
+  const verification = useVerificationSummary();
 
   const topicsByTier = (topics.data ?? []).reduce<Record<Tier, DsaTopic[]>>(
     (acc, t) => { (acc[t.tier] ||= []).push(t); return acc; },
@@ -102,6 +105,9 @@ function DsaCommandCenter() {
           } />
         </div>
       )}
+
+      {/* Verified capability — kept separate from learning progress */}
+      {verification.data && <VerificationSummaryCard summary={verification.data} />}
 
       {/* Main grid: content + sidebar */}
       <div className="grid grid-cols-1 xl:grid-cols-[1fr_320px] gap-6">
