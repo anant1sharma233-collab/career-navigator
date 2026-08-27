@@ -11,6 +11,8 @@ import { JourneyCard } from "@/components/dashboard/JourneyCard";
 import { MissionItem } from "@/components/dashboard/MissionItem";
 import { Roadmap } from "@/components/dashboard/Roadmap";
 import { Button } from "@/components/ui/button";
+import { VerificationSummaryCard } from "@/components/verification/VerificationSummaryCard";
+import { useVerificationSummary } from "@/hooks/useVerification";
 import type { Mission } from "@/types";
 
 export const Route = createFileRoute("/_student/dashboard")({
@@ -28,6 +30,7 @@ function DashboardPage() {
     queryKey: ["student", "dashboard"],
     queryFn: () => studentService.getDashboard(),
   });
+  const verification = useVerificationSummary();
 
   const [missions, setMissions] = useState<Mission[] | null>(null);
   const current = missions ?? data?.missions ?? [];
@@ -131,6 +134,9 @@ function DashboardPage() {
           ))}
         </div>
       </section>
+
+      {/* Verified capability — separate from learning progress */}
+      {verification.data && <VerificationSummaryCard summary={verification.data} />}
 
       {/* Today's Mission */}
       <section className="grid grid-cols-1 lg:grid-cols-5 gap-5">
