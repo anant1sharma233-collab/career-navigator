@@ -22,13 +22,22 @@ export function PortalSidebar({ brand, brandHref, items, cta }: PortalSidebarPro
   return (
     <aside className="sidebar-surface fixed left-0 top-0 z-30 h-screen w-[260px] flex flex-col">
       <div className="px-6 pt-7 pb-8">
-        <Link to={brandHref as any} className="inline-flex items-center gap-2">
-          <div className="h-7 w-7 rounded-lg gradient-primary glow-primary" />
-          <span className="text-xl font-semibold gradient-text tracking-tight">{brand}</span>
+        <Link to={brandHref as any} className="inline-flex items-center gap-3">
+          <div
+            className="flex h-9 w-9 items-center justify-center rounded-xl text-base font-bold text-primary-foreground"
+            style={{ background: "linear-gradient(135deg,#ff3b30,#7f1d1d)" }}
+          >
+            {brand.charAt(0)}
+          </div>
+          <span className="text-lg font-semibold tracking-tight text-foreground">{brand}</span>
         </Link>
       </div>
 
-      <nav className="flex-1 px-3 space-y-1">
+      <p className="px-6 pb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+        Workspace
+      </p>
+
+      <nav className="flex-1 px-3 space-y-0.5">
         {items.map((item, i) => {
           const active = pathname === item.to || pathname.startsWith(item.to + "/");
           const Icon = item.icon;
@@ -43,14 +52,17 @@ export function PortalSidebar({ brand, brandHref, items, cta }: PortalSidebarPro
                 to={item.to as any}
                 style={{ transition: "background-color 150ms ease, color 150ms ease, box-shadow 150ms ease" }}
                 className={cn(
-                  "group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm",
+                  "group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm",
                   active
-                    ? "bg-primary text-white nav-active-glow"
-                    : "text-muted-foreground hover:text-white hover:bg-[rgba(124,58,237,0.08)]",
+                    ? "bg-white/[0.06] text-foreground border border-white/8"
+                    : "text-muted-foreground border border-transparent hover:text-foreground hover:bg-white/[0.035]",
                 )}
               >
-                <Icon className="w-4 h-4" />
-                <span className="font-medium">{item.label}</span>
+                {active && (
+                  <span className="absolute left-0 top-1/2 h-5 w-[2px] -translate-y-1/2 rounded-full bg-primary" />
+                )}
+                <Icon className={cn("w-4 h-4", active && "text-primary")} />
+                <span className="font-medium tracking-tight">{item.label}</span>
               </Link>
             </motion.div>
           );
