@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RecruiterRouteImport } from './routes/recruiter'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as CollegeRouteImport } from './routes/college'
@@ -36,6 +37,11 @@ import { Route as StudentDsaPackagePackageIdRouteImport } from './routes/_studen
 import { Route as StudentDsaJourneyTopicIdRouteImport } from './routes/_student/dsa.journey.$topicId'
 import { Route as StudentDsaCompanyCompanyIdRouteImport } from './routes/_student/dsa.company.$companyId'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecruiterRoute = RecruiterRouteImport.update({
   id: '/recruiter',
   path: '/recruiter',
@@ -174,6 +180,7 @@ export interface FileRoutesByFullPath {
   '/college': typeof CollegeRouteWithChildren
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
+  '/register': typeof RegisterRoute
   '/dashboard': typeof StudentDashboardRoute
   '/dsa': typeof StudentDsaRouteWithChildren
   '/jobs': typeof StudentJobsRoute
@@ -201,6 +208,7 @@ export interface FileRoutesByTo {
   '/college': typeof CollegeRouteWithChildren
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
+  '/register': typeof RegisterRoute
   '/dashboard': typeof StudentDashboardRoute
   '/jobs': typeof StudentJobsRoute
   '/leaderboard': typeof StudentLeaderboardRoute
@@ -229,6 +237,7 @@ export interface FileRoutesById {
   '/college': typeof CollegeRouteWithChildren
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
+  '/register': typeof RegisterRoute
   '/_student/dashboard': typeof StudentDashboardRoute
   '/_student/dsa': typeof StudentDsaRouteWithChildren
   '/_student/jobs': typeof StudentJobsRoute
@@ -258,6 +267,7 @@ export interface FileRouteTypes {
     | '/college'
     | '/login'
     | '/recruiter'
+    | '/register'
     | '/dashboard'
     | '/dsa'
     | '/jobs'
@@ -285,6 +295,7 @@ export interface FileRouteTypes {
     | '/college'
     | '/login'
     | '/recruiter'
+    | '/register'
     | '/dashboard'
     | '/jobs'
     | '/leaderboard'
@@ -312,6 +323,7 @@ export interface FileRouteTypes {
     | '/college'
     | '/login'
     | '/recruiter'
+    | '/register'
     | '/_student/dashboard'
     | '/_student/dsa'
     | '/_student/jobs'
@@ -341,10 +353,18 @@ export interface RootRouteChildren {
   CollegeRoute: typeof CollegeRouteWithChildren
   LoginRoute: typeof LoginRoute
   RecruiterRoute: typeof RecruiterRouteWithChildren
+  RegisterRoute: typeof RegisterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recruiter': {
       id: '/recruiter'
       path: '/recruiter'
@@ -616,6 +636,7 @@ const rootRouteChildren: RootRouteChildren = {
   CollegeRoute: CollegeRouteWithChildren,
   LoginRoute: LoginRoute,
   RecruiterRoute: RecruiterRouteWithChildren,
+  RegisterRoute: RegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
