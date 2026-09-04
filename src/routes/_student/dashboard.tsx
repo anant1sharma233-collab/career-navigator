@@ -54,7 +54,7 @@ function DashboardPage() {
   if (isError) {
     return (
       <div className="glass rounded-2xl p-8 text-center">
-        <p className="text-white font-medium">We couldn't load your dashboard.</p>
+        <p className="text-foreground font-medium">We couldn't load your dashboard.</p>
         <p className="text-sm text-muted-foreground mt-1">Please refresh or try again shortly.</p>
       </div>
     );
@@ -73,11 +73,16 @@ function DashboardPage() {
       <section className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
         <div className="lg:col-span-3 space-y-5">
           <div>
-            <h1 className="text-4xl font-semibold tracking-tight text-white">
-              Welcome back, {data.user.name} <span aria-hidden>👋</span>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+              Your workspace
+            </p>
+            <h1 className="mt-3 text-4xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-5xl">
+              Welcome back,{" "}
+              <span className="gradient-text">{data.user.name}</span>
             </h1>
-            <p className="mt-2 text-base text-muted-foreground">
-              Let's boost your placement readiness.
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+              Track DSA, projects and subjects in one place — and close the gap between you and the
+              offer you want.
             </p>
           </div>
           <div className="glass-card rounded-3xl p-8 flex items-center gap-8">
@@ -89,7 +94,7 @@ function DashboardPage() {
               <p className="text-xs uppercase tracking-wider text-muted-foreground">
                 You're on track
               </p>
-              <p className="text-2xl text-white font-semibold leading-tight">
+              <p className="text-2xl text-foreground font-semibold leading-tight">
                 Interview ready in{" "}
                 <span className="gradient-text">{stats.daysToReady} days</span>
               </p>
@@ -189,7 +194,7 @@ function DashboardPage() {
 function SectionTitle({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <div className="mb-5">
-      <h2 className="text-xl font-semibold text-white tracking-tight">{title}</h2>
+      <h2 className="text-xl font-semibold text-foreground tracking-tight">{title}</h2>
       {subtitle && <p className="text-sm text-muted-foreground mt-0.5">{subtitle}</p>}
     </div>
   );
@@ -199,10 +204,10 @@ function MiniStat({ icon, label, value }: { icon: React.ReactNode; label: string
   return (
     <div className="glass rounded-xl px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-2.5 text-sm text-muted-foreground">
-        <span className="text-white/70">{icon}</span>
+        <span className="text-foreground/70">{icon}</span>
         {label}
       </div>
-      <span className="text-sm text-white font-medium">{value}</span>
+      <span className="text-sm text-foreground font-medium">{value}</span>
     </div>
   );
 }

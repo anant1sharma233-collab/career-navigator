@@ -165,7 +165,7 @@ const MOCK: DSAData = {
       videoTitle: "How to Prepare for 7-11 LPA", videoDuration: "20 min",
       videoThumb: "https://img.youtube.com/vi/KLlXCFG5TnA/maxresdefault.jpg",
       videoLink: "https://youtube.com/watch?v=KLlXCFG5TnA",
-      accent: "from-indigo-500/30 to-purple-500/10",
+      accent: "from-[#ff5b4a]/30 to-[#ff8a65]/10",
     },
     {
       id: "p3", name: "11-15+ LPA", level: "Advanced",

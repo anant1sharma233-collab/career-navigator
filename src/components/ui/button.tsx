@@ -9,9 +9,9 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "text-white gradient-primary hover:opacity-95 hover:shadow-[0_10px_40px_-10px_rgba(124,58,237,0.6)] active:scale-[0.99]",
+          "text-white gradient-primary hover:opacity-95 hover:shadow-[0_10px_40px_-10px_rgba(255,68,51,0.45)] active:scale-[0.99]",
         primary:
-          "text-white gradient-primary hover:opacity-95 hover:shadow-[0_10px_40px_-10px_rgba(124,58,237,0.6)] active:scale-[0.99]",
+          "text-white gradient-primary hover:opacity-95 hover:shadow-[0_10px_40px_-10px_rgba(255,68,51,0.45)] active:scale-[0.99]",
         secondary: "text-white bg-white/5 border border-white/10 hover:bg-white/10",
         outline: "text-white border border-white/15 bg-transparent hover:bg-white/5",
         ghost: "text-white/80 hover:text-white hover:bg-white/5",
