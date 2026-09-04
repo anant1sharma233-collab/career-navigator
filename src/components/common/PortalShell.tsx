@@ -20,9 +20,9 @@ export function PortalShell({ brand, brandHref, nav, userName, cta, children }: 
     <div className="min-h-screen relative">
       <AuroraBackground />
       <PortalSidebar brand={brand} brandHref={brandHref} items={nav} cta={cta} />
-      <div className="pl-[260px]">
+      <div className="pl-0 md:pl-[260px]">
         <Header userName={userName} />
-        <main className="px-8 py-8">{children}</main>
+        <main className="px-5 py-8 sm:px-8 max-w-[1400px] mx-auto w-full">{children}</main>
       </div>
       <CommandPalette />
     </div>
