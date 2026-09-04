@@ -9,8 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RecruiterRouteImport } from './routes/recruiter'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as CollegeRouteImport } from './routes/college'
 import { Route as StudentRouteImport } from './routes/_student'
 import { Route as IndexRouteImport } from './routes/index'
@@ -36,6 +38,11 @@ import { Route as StudentDsaPackagePackageIdRouteImport } from './routes/_studen
 import { Route as StudentDsaJourneyTopicIdRouteImport } from './routes/_student/dsa.journey.$topicId'
 import { Route as StudentDsaCompanyCompanyIdRouteImport } from './routes/_student/dsa.company.$companyId'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecruiterRoute = RecruiterRouteImport.update({
   id: '/recruiter',
   path: '/recruiter',
@@ -44,6 +51,11 @@ const RecruiterRoute = RecruiterRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollegeRoute = CollegeRouteImport.update({
@@ -172,8 +184,10 @@ const StudentDsaCompanyCompanyIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/college': typeof CollegeRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
+  '/register': typeof RegisterRoute
   '/dashboard': typeof StudentDashboardRoute
   '/dsa': typeof StudentDsaRouteWithChildren
   '/jobs': typeof StudentJobsRoute
@@ -199,8 +213,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/college': typeof CollegeRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
+  '/register': typeof RegisterRoute
   '/dashboard': typeof StudentDashboardRoute
   '/jobs': typeof StudentJobsRoute
   '/leaderboard': typeof StudentLeaderboardRoute
@@ -227,8 +243,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_student': typeof StudentRouteWithChildren
   '/college': typeof CollegeRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
+  '/register': typeof RegisterRoute
   '/_student/dashboard': typeof StudentDashboardRoute
   '/_student/dsa': typeof StudentDsaRouteWithChildren
   '/_student/jobs': typeof StudentJobsRoute
@@ -256,8 +274,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/college'
+    | '/forgot-password'
     | '/login'
     | '/recruiter'
+    | '/register'
     | '/dashboard'
     | '/dsa'
     | '/jobs'
@@ -283,8 +303,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/college'
+    | '/forgot-password'
     | '/login'
     | '/recruiter'
+    | '/register'
     | '/dashboard'
     | '/jobs'
     | '/leaderboard'
@@ -310,8 +332,10 @@ export interface FileRouteTypes {
     | '/'
     | '/_student'
     | '/college'
+    | '/forgot-password'
     | '/login'
     | '/recruiter'
+    | '/register'
     | '/_student/dashboard'
     | '/_student/dsa'
     | '/_student/jobs'
@@ -339,12 +363,21 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StudentRoute: typeof StudentRouteWithChildren
   CollegeRoute: typeof CollegeRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   RecruiterRoute: typeof RecruiterRouteWithChildren
+  RegisterRoute: typeof RegisterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recruiter': {
       id: '/recruiter'
       path: '/recruiter'
@@ -357,6 +390,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/college': {
@@ -614,8 +654,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StudentRoute: StudentRouteWithChildren,
   CollegeRoute: CollegeRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   RecruiterRoute: RecruiterRouteWithChildren,
+  RegisterRoute: RegisterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
