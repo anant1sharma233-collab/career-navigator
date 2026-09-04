@@ -43,44 +43,46 @@
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --color-hairline: var(--hairline);
+  --color-primary-glow: var(--primary-glow);
 }
 
 :root {
   --radius: 0.75rem;
 
   /* Core (dark-only) */
-  --background: #09090b;
-  --foreground: #ffffff;
+  --background: #070605;
+  --foreground: #fbf8f6;
 
-  --surface: rgba(30, 41, 59, 0.6);
-  --surface-elevated: rgba(30, 41, 59, 0.85);
-  --hairline: rgba(63, 75, 95, 0.5);
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-elevated: rgba(22, 17, 15, 0.9);
+  --hairline: rgba(255, 255, 255, 0.08);
 
-  --card: rgba(30, 41, 59, 0.7);
-  --card-foreground: #ffffff;
-  --popover: #0b0b10;
-  --popover-foreground: #ffffff;
+  --card: rgba(20, 15, 14, 0.75);
+  --card-foreground: #fbf8f6;
+  --popover: #0d0a09;
+  --popover-foreground: #fbf8f6;
 
-  --primary: #7c3aed;
-  --primary-foreground: #ffffff;
-  --secondary: #6366f1;
-  --secondary-foreground: #ffffff;
-  --accent: #3b82f6;
-  --accent-foreground: #ffffff;
-  --pink: #ec4899;
+  --primary: #ff4433;
+  --primary-foreground: #fbf8f6;
+  --primary-glow: #ff8a65;
+  --secondary: #ff5b4a;
+  --secondary-foreground: #fbf8f6;
+  --accent: #ffb199;
+  --accent-foreground: #1a0f0c;
+  --pink: #ff8a73;
 
-  --muted: rgba(30, 41, 59, 0.5);
-  --muted-foreground: #9ca3af;
+  --muted: rgba(255, 255, 255, 0.04);
+  --muted-foreground: #9b938d;
 
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #ff4433;
+  --destructive: #ff4433;
+  --destructive-foreground: #fbf8f6;
 
-  --border: rgba(63, 75, 95, 0.5);
-  --input: rgba(63, 75, 95, 0.4);
-  --ring: #7c3aed;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: rgba(255, 91, 74, 0.55);
 }
 
 /* Force the dark palette everywhere */
@@ -128,28 +130,28 @@
 }
 
 @utility gradient-text {
-  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #60a5fa 100%);
+  background: linear-gradient(90deg, #ff5b4a 0%, #ff8a65 50%, #ffb199 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility gradient-primary {
-  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  background: linear-gradient(135deg, #ff4433 0%, #ff7a4d 100%);
 }
 
 @utility gradient-surface {
   background:
-    radial-gradient(900px 500px at 15% -10%, rgba(124, 58, 237, 0.10), transparent 55%),
-    radial-gradient(700px 400px at 95% 110%, rgba(99, 102, 241, 0.08), transparent 55%),
-    radial-gradient(500px 300px at 50% 50%, rgba(79, 70, 229, 0.04), transparent 60%),
-    #09090B;
+    radial-gradient(900px 500px at 15% -10%, rgba(255, 68, 51, 0.10), transparent 55%),
+    radial-gradient(700px 400px at 95% 110%, rgba(255, 138, 101, 0.07), transparent 55%),
+    radial-gradient(500px 300px at 50% 50%, rgba(255, 91, 74, 0.04), transparent 60%),
+    #070605;
 }
 
 @utility glow-primary {
   box-shadow:
-    0 0 0 1px rgba(124, 58, 237, 0.4),
-    0 10px 40px -10px rgba(124, 58, 237, 0.5);
+    0 0 0 1px rgba(255, 68, 51, 0.35),
+    0 10px 40px -10px rgba(255, 68, 51, 0.45);
 }
 
 @utility ring-pulse {
@@ -159,11 +161,11 @@
 @keyframes ring-pulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.55);
+    box-shadow: 0 0 0 0 rgba(255, 138, 101, 0.5);
   }
   50% {
     transform: scale(1.08);
-    box-shadow: 0 0 0 12px rgba(245, 158, 11, 0);
+    box-shadow: 0 0 0 12px rgba(255, 138, 101, 0);
   }
 }
 
@@ -176,29 +178,29 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.25);
+  background: rgba(255, 91, 74, 0.22);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(124, 58, 237, 0.45);
+  background: rgba(255, 68, 51, 0.4);
 }
 
 /* ===== Glass card (enhancement #3) ===== */
 @utility glass-card {
-  background: rgba(28, 28, 33, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px) saturate(140%);
+  background: linear-gradient(180deg, rgba(20, 15, 14, 0.85), rgba(12, 9, 8, 0.85));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px) saturate(130%);
 }
 
 /* ===== Sidebar surface (enhancement #2) ===== */
 @utility sidebar-surface {
-  background: rgba(15, 15, 18, 0.7);
+  background: linear-gradient(180deg, rgba(14, 10, 9, 0.92), rgba(9, 7, 6, 0.92));
   backdrop-filter: blur(10px) saturate(140%);
   border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 @utility nav-active-glow {
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 0 24px rgba(255, 68, 51, 0.22);
 }
 
 /* ===== Journey hover (enhancement #5) ===== */
@@ -207,12 +209,12 @@
 }
 .journey-hover:hover {
   transform: translateY(-4px);
-  border-color: rgba(124, 58, 237, 0.3);
+  border-color: rgba(255, 91, 74, 0.32);
 }
 
 /* ===== Continue Journey button glow (enhancement #4) ===== */
 .continue-journey-btn:hover {
-  box-shadow: 0 0 24px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 0 28px rgba(255, 68, 51, 0.35);
 }
 
 /* ===== Readiness focal glow (enhancement #4) ===== */
@@ -222,7 +224,7 @@
   margin: auto;
   width: 70%;
   height: 70%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 68, 51, 1) 0%, transparent 70%);
   filter: blur(40px);
   opacity: 0.15;
   pointer-events: none;
@@ -230,13 +232,13 @@
 
 /* ===== Aurora background (enhancement #1) ===== */
 .aurora-root {
-  background: #09090b;
+  background: #070605;
 }
 .aurora-blob {
   position: absolute;
   border-radius: 9999px;
   filter: blur(120px);
-  opacity: 0.1;
+  opacity: 0.07;
   will-change: transform;
 }
 .aurora-blob-1 {
@@ -244,7 +246,7 @@
   height: 60vw;
   left: -10vw;
   top: -15vw;
-  background: radial-gradient(circle, #7c3aed 0%, transparent 65%);
+  background: radial-gradient(circle, #ff4433 0%, transparent 65%);
   animation: aurora-drift-1 70s ease-in-out infinite;
 }
 .aurora-blob-2 {
@@ -252,7 +254,7 @@
   height: 55vw;
   right: -10vw;
   bottom: -15vw;
-  background: radial-gradient(circle, #6366f1 0%, transparent 65%);
+  background: radial-gradient(circle, #ff7a4d 0%, transparent 65%);
   opacity: 0.09;
   animation: aurora-drift-2 90s ease-in-out infinite;
 }
@@ -261,7 +263,7 @@
   height: 45vw;
   left: 30vw;
   top: 30vh;
-  background: radial-gradient(circle, #8b5cf6 0%, transparent 65%);
+  background: radial-gradient(circle, #ff5b4a 0%, transparent 65%);
   opacity: 0.08;
   animation: aurora-drift-3 80s ease-in-out infinite;
 }

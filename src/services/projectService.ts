@@ -44,7 +44,7 @@ const STACKS: TechStack[] = [
     id: "aspnet", name: "ASP.NET",
     shortDescription: "Build enterprise APIs and web apps with C# and .NET.",
     difficulty: "Intermediate", estimatedDuration: "10 weeks", progress: 12,
-    accent: "from-violet-500 to-indigo-500", icon: "🟣",
+    accent: "from-[#ff4433] to-[#ff8a65]", icon: "🟣",
   },
   {
     id: "llm", name: "LLM Engineering",

@@ -122,7 +122,7 @@ export function AddProjectModal({ open, onClose, stacks, defaultStackId, onSubmi
                     <input
                       type="range" min={0} max={100} value={completion}
                       onChange={(e) => setCompletion(Number(e.target.value))}
-                      className="mt-2 w-full accent-[#7c3aed]"
+                      className="mt-2 w-full accent-[#ff4433]"
                     />
                   </div>
 

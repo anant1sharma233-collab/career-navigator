@@ -4,9 +4,9 @@ import type { Journey } from "@/types";
 import { cn } from "@/utils/cn";
 
 const accentMap = {
-  primary: { bar: "from-[#a78bfa] to-[#7c3aed]", glow: "shadow-[0_20px_60px_-20px_rgba(124,58,237,0.55)]" },
-  secondary: { bar: "from-[#818cf8] to-[#6366f1]", glow: "shadow-[0_20px_60px_-20px_rgba(99,102,241,0.55)]" },
-  accent: { bar: "from-[#60a5fa] to-[#3b82f6]", glow: "shadow-[0_20px_60px_-20px_rgba(59,130,246,0.55)]" },
+  primary: { bar: "from-[#ff8a65] to-[#ff4433]", glow: "shadow-[0_20px_60px_-20px_rgba(255,68,51,0.45)]" },
+  secondary: { bar: "from-[#ffb199] to-[#ff5b4a]", glow: "shadow-[0_20px_60px_-20px_rgba(255,91,74,0.45)]" },
+  accent: { bar: "from-[#ffd0a8] to-[#ff7a4d]", glow: "shadow-[0_20px_60px_-20px_rgba(255,122,77,0.45)]" },
 } as const;
 
 export function JourneyCard({ journey }: { journey: Journey }) {
