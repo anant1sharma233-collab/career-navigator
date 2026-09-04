@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RecruiterRouteImport } from './routes/recruiter'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as CollegeRouteImport } from './routes/college'
 import { Route as StudentRouteImport } from './routes/_student'
 import { Route as IndexRouteImport } from './routes/index'
@@ -50,6 +51,11 @@ const RecruiterRoute = RecruiterRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollegeRoute = CollegeRouteImport.update({
@@ -178,6 +184,7 @@ const StudentDsaCompanyCompanyIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/college': typeof CollegeRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
   '/register': typeof RegisterRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/college': typeof CollegeRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
   '/register': typeof RegisterRoute
@@ -235,6 +243,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_student': typeof StudentRouteWithChildren
   '/college': typeof CollegeRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/recruiter': typeof RecruiterRouteWithChildren
   '/register': typeof RegisterRoute
@@ -265,6 +274,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/college'
+    | '/forgot-password'
     | '/login'
     | '/recruiter'
     | '/register'
@@ -293,6 +303,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/college'
+    | '/forgot-password'
     | '/login'
     | '/recruiter'
     | '/register'
@@ -321,6 +332,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_student'
     | '/college'
+    | '/forgot-password'
     | '/login'
     | '/recruiter'
     | '/register'
@@ -351,6 +363,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   StudentRoute: typeof StudentRouteWithChildren
   CollegeRoute: typeof CollegeRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   RecruiterRoute: typeof RecruiterRouteWithChildren
   RegisterRoute: typeof RegisterRoute
@@ -377,6 +390,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/college': {
@@ -634,6 +654,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   StudentRoute: StudentRouteWithChildren,
   CollegeRoute: CollegeRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   RecruiterRoute: RecruiterRouteWithChildren,
   RegisterRoute: RegisterRoute,
