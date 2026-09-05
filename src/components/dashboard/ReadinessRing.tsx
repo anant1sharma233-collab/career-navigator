@@ -21,7 +21,7 @@ export function ReadinessRing({ value, size = 200, stroke = 14 }: Props) {
         <defs>
           <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#ff4433" />
-            <stop offset="100%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#ffb199" />
           </linearGradient>
         </defs>
         <circle

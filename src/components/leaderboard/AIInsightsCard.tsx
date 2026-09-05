@@ -50,7 +50,7 @@ export function AIInsightsCard({ rank, insights, loading }: Props) {
                 key={i.id}
                 className="rounded-xl border border-white/10 bg-white/[0.03] p-4 flex items-start gap-3"
               >
-                <Sparkles className="w-4 h-4 text-cyan-300 mt-0.5 shrink-0" />
+                <Sparkles className="w-4 h-4 text-[#ff8a73] mt-0.5 shrink-0" />
                 <div className="min-w-0 flex-1">
                   <div className="text-sm text-white">{i.message}</div>
                   <div className="mt-0.5 text-xs text-primary">{i.impact}</div>
