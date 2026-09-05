@@ -7,7 +7,7 @@ import type { DSACompany } from "@/features/services/dsaApi";
 
 const tierStyle: Record<DSACompany["tier"], string> = {
   "Beginner Friendly": "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
-  "Entry Level": "bg-sky-500/15 text-sky-300 border-sky-500/30",
+  "Entry Level": "bg-[#ffb199]/12 text-[#ffb199] border-[#ffb199]/30",
   "Top Tier": "bg-amber-500/15 text-amber-300 border-amber-500/30",
   "Elite": "bg-rose-500/15 text-rose-300 border-rose-500/30",
 };

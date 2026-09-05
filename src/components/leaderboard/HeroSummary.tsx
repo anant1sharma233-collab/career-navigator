@@ -35,7 +35,7 @@ export function HeroSummary({ user, summary, formula, loading }: Props) {
       value: `${summary.readinessScore}`,
       hint: "Hiring readiness",
       featured: true,
-      icon: <Sparkles className="w-4 h-4 text-cyan-300" />,
+      icon: <Sparkles className="w-4 h-4 text-[#ff8a73]" />,
     },
     { label: "Total Score", value: summary.totalScore.toLocaleString(), hint: "Composite" },
     user.hasCollege && summary.collegeRank
