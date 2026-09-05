@@ -17,7 +17,7 @@ export function ProgressRing({ value, size = 72, stroke = 7, label }: ProgressRi
       <svg width={size} height={size} className="-rotate-90">
         <defs>
           <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#a78bfa" />
+            <stop offset="0%" stopColor="#ff4433" />
             <stop offset="100%" stopColor="#ffb199" />
           </linearGradient>
         </defs>
